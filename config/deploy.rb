@@ -1,5 +1,5 @@
 # config valid only for current version of Capistrano
-lock '<Capistranoのバージョン>'
+lock '3.10.1'
 
 set :application, 'twitter'
 set :repo_url,  'git@github.com:pieroplus/twitter.git'
