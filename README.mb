@@ -19,12 +19,12 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|name|text|null: false, add_index|
-|screen_name|text|null: false, unique: true, add_index|
+|name|text|null: false, add_index: true|
+|screen_name|text|null: false, unique: true, add_index: true|
 |email|text|null: false, unique: true|
 |introduction|text||
 |address|text||
-|url|text||
+|user_url|text||
 |birthday|text||
 |icon_img|string||
 |header_img|string|||
@@ -35,6 +35,7 @@ Things you may want to cover:
 - has_many :favotrites
 - has_many :messages
 - has_many :active_relationships, class_name:"Relationship"
+- has_one :member
 
 ## tweetsテーブル
 
@@ -50,6 +51,7 @@ Things you may want to cover:
 ### Association
 - belongs_to :user
 - has_many :images
+- has_many :favorites
 
 ## imagesテーブル
 
@@ -70,6 +72,7 @@ Things you may want to cover:
 
 ### Association
 - belongs_to :user
+- belongs_to :tweet
 
 ## relationshipsテーブル
 
@@ -103,7 +106,7 @@ Things you may want to cover:
 
 ### Association
 - has_many :members
-- belongs_to :messages
+- has_many :messages
 
 ## membersテーブル
 
@@ -113,7 +116,9 @@ Things you may want to cover:
 |group_id|integer|null: false, foreign_key: true|
 
 ### Association
+- belongs_to :user
 - belongs_to :group
+
 
 * Database initialization
 
