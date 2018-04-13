@@ -1,0 +1,27 @@
+<div class="new_user_session">
+  <h2>Twitterにログイン</h2>
+
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, placeholder: "メールアドレス", class: "input" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password %><br />
+      <%= f.password_field :password, autocomplete: "off" , placeholder: "パスワード", class: "input" %>
+    </div>
+
+    <% if devise_mapping.rememberable? -%>
+      <div class="field">
+        <%= f.label :remember_me, "入力したデータを保存しますか？" , id: "remember_me_message" %><br />
+        <%= f.check_box :remember_me, class: "remember_me_message"  %>
+      </div>
+    <% end -%>
+
+    <div class="log_in_btn">
+      <%= f.submit "ログイン", id: "log_in_btn"  %>
+    </div>
+  <% end %>
+</div>
+<%= render "devise/shared/links" %>
