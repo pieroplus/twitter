@@ -1,8 +1,37 @@
-<div class="contents row" >
-    <p><%= @name %>さんの投稿一覧</p>
-      <div class="content_post" style="background-image: url(<%= tweet.image %>);">
-        <%= simple_format(tweet.text) %>
-        <span class="name"><%= tweet.name %></span>
-      </div>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Twitter</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <!-- <header class="header"> -->
+<!-- </header> -->
+  <header>
+    <div class="header__lists">
+      <li>
+        <ul>
+        </ul>
+      </li>
+    </div>
+  </header>
+  <% yield %>
+  <div class="profilecanopy-inner">
+    <div class="profilecanopy-header">
+    </div>
+    <div class="profilecanopy-navbar">
+    </div>
   </div>
+
+  <div class="contents">
+  </div>
+
+<footer>
+</footer>
+<%= yield %>
+
+</body>
+</html>
 
