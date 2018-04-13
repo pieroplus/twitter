@@ -1,0 +1,15 @@
+<html>
+<body>
+  <div class="header">
+      <a href="/users/<%= current_user.id%>">マイページ</a>
+      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+  </div>
+  <div class="contents">
+      <div class="left-content">
+      </div>
+      <div class="main-content">
+      </div>
+  </div>
+</body>
+
+</html>
