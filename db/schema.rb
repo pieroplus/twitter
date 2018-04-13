@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20180411024135) do
     t.datetime "created_at",                                        null: false
     t.datetime "updated_at",                                        null: false
     t.text     "name",                   limit: 65535
+    t.text     "screen_name",            limit: 65535
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
