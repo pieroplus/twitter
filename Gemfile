@@ -57,3 +57,4 @@ end
 gem 'carrierwave'
 gem 'fog'
 gem 'devise'
+gem 'mini_magick'
