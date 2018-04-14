@@ -12,3 +12,7 @@
 !/log/.keep
 /tmp
 config/secrets.yml
+
+test/models/image_test.rb
+
+test/models/tweet_test.rb

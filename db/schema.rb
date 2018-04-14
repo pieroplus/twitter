@@ -11,7 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180411024135) do
+ActiveRecord::Schema.define(version: 20180414024903) do
+
+  create_table "images", force: :cascade do |t|
+    t.string   "content",    limit: 255
+    t.integer  "tweet_id",   limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "tweets", force: :cascade do |t|
+    t.text     "text",       limit: 65535
+    t.integer  "image_id",   limit: 4
+    t.integer  "user_id",    limit: 4
+    t.integer  "retweet_id", limit: 4
+    t.integer  "reply_id",   limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "tweets", ["image_id"], name: "fk_rails_c4ac7c0255", using: :btree
+  add_index "tweets", ["user_id"], name: "fk_rails_003928b7f5", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255,   default: "", null: false
@@ -27,9 +47,12 @@ ActiveRecord::Schema.define(version: 20180411024135) do
     t.datetime "created_at",                                        null: false
     t.datetime "updated_at",                                        null: false
     t.text     "name",                   limit: 65535
+    t.text     "screen_name",            limit: 65535
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "tweets", "images"
+  add_foreign_key "tweets", "users"
 end
