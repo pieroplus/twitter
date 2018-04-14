@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180411024135) do
+ActiveRecord::Schema.define(version: 20180410051926) do
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255,   default: "", null: false
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20180411024135) do
     t.string   "last_sign_in_ip",        limit: 255
     t.datetime "created_at",                                        null: false
     t.datetime "updated_at",                                        null: false
+    t.text     "screen_name",            limit: 65535
     t.text     "name",                   limit: 65535
   end
 
