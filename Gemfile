@@ -51,7 +51,7 @@ group :development do
 end
 
 group :production do
-  gem 'unicorn'
+  gem 'unicorn', '~> 5.3.0'
 end
 
 gem 'carrierwave'
