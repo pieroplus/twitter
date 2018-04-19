@@ -58,4 +58,9 @@ gem 'carrierwave'
 gem 'fog'
 gem 'devise'
 gem 'mini_magick'
+# Bootstrap
+gem 'twitter-bootswatch-rails', '~> 3.1.1'
+gem 'twitter-bootswatch-rails-helpers'
+gem 'therubyracer'   # javascript runtime。lessをコンパイルするために必要
+gem 'less-rails'     # Railsでlessを使えるようにする。Bootstrapがlessで書かれているため
 gem 'acts_as_follower'
