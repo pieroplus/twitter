@@ -1,4 +1,4 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<!-- <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
@@ -41,3 +41,73 @@
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
 <%= link_to "Back", :back %>
+ -->
+<!-- render :action => "application", :layout => false %> -->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="users_edit.css">
+  <title>twitter</title>
+</head>
+<body>
+  <div class="users-edit">
+    <header>
+    </header>
+    <h2>ユーザー情報の変更</h2>
+    <form class="user-edit">
+      <div class="field">
+        <p>メールアドレス</p>
+        <input type="email" placeholder="メールアドレスを入力してください"><br>
+      </div>
+
+      <div class="field">
+        <p>名前（ニックネーム）</p>
+        <input type="text" placeholder="名前を入力してください"><br>
+      </div>
+
+      <div class="field">
+        <p>アイコン</p>
+      </div>
+
+      <div class="field">
+        <p>ヘッダー画像</p>
+      </div>
+
+      <div class="field">
+        <p>パスワード（変更をしない場合は空白）</p>
+        <input type="password" placeholder="新しいパスワードを入力してください"><br>
+      </div>
+
+      <div class="field">
+        <p>パスワード確認用（変更をしない場合は空白）</p>
+        <input type="password" placeholder="新しいパスワードを入力してください（確認用）"><br>
+      </div>
+
+      <div class="field">
+        <div class="update-btn">
+          <a href="/users/update">変更を保存</a>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="back-btn">
+          <a href="/users/show">ホームへ戻る</a>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="mypage-btn">
+          <a href="/users/<%= current_user.id %>">マイページ</a>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="logout-btn">
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+        </div>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
