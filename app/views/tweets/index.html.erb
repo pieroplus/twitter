@@ -1,15 +1,61 @@
 <html>
 <body>
   <div class="header">
-      <a href="/users/<%= current_user.id%>">マイページ</a>
+      <a href="/users/<%= current_user.id %>">マイページ</a>
       <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
   </div>
   <div class="contents">
       <div class="left-content">
       </div>
       <div class="main-content">
+        <div class="tweet_contents">
+          <div class="post_area">
+            <ul>
+              <li>
+                <div class="user_icon">
+                </div>
+              </li>
+              <li>
+                <div class="tweet_area">
+                  <%= form_for @tweet do |f| %>
+                    <%= f.hidden_field :user_id, value: current_user.id %>
+                    <%= f.text_field :text, id: :new_tweet %>
+                </div>
+                  <div class="icons_area">
+                    <ul class="icons">
+                      <li>
+                        <%= fa_icon "image 2x" %>
+                      </li>
+                      <li>
+                        <%= fa_icon "signal 2x" %>
+                      </li>
+                      <li>
+                        <%= fa_icon "map-marker 2x" %>
+                      </li>
+                    </ul>
+                    <%= f.submit "ツイート", id: "submit_btn" %>
+                    <% end %>
+                  </div>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <% @tweets.each do |tweet| %>
+          <%= render partial: "tweets/tweet", locals: { tweet: tweet } %>
+            <% end %>
+
+          </div>
+          <!-- <%= form_for @tweet do |f| %>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+            <%= f.text_field :text, id: :tweet_content %>
+
+              <%= f.fields_for :images do |i| %>
+                <%= i.file_field :content %>
+              <% end %>
+              <%= f.submit %>
+          <% end %> -->
+        </div>
       </div>
   </div>
 </body>
-
 </html>
