@@ -1,7 +1,18 @@
 class UsersController < ApplicationController
+
   def show
     @name = current_user.name
-    # @screenname
-    # @tweets = Tweet.where(user_id: current_user.id)
+  end
+
+  def follow
+      @user = User.find(params[:user_id])
+      current_user.follow(@user)
+      redirect_to user_path(@user)
+  end
+
+  def destroy
+      @user = User.find(params[:user_id])
+      current_user.stop_following(@user)
+      redirect_to user_path(@user)
   end
 end

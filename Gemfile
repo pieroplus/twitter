@@ -51,7 +51,7 @@ group :development do
 end
 
 group :production do
-  gem 'unicorn'
+  gem 'unicorn', '~> 5.3.0'
 end
 
 gem 'carrierwave'
@@ -63,3 +63,4 @@ gem 'twitter-bootswatch-rails', '~> 3.1.1'
 gem 'twitter-bootswatch-rails-helpers'
 gem 'therubyracer'   # javascript runtime。lessをコンパイルするために必要
 gem 'less-rails'     # Railsでlessを使えるようにする。Bootstrapがlessで書かれているため
+gem 'acts_as_follower'
