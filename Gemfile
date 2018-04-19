@@ -49,13 +49,20 @@ group :development do
   gem 'web-console', '~> 2.0'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
-  gem 'devise'
+  gem 'spring', '~> 1.6.3'
 end
 
 group :production do
-  gem 'unicorn'
+  gem 'unicorn', '~> 5.3.0'
 end
 
 gem 'carrierwave'
 gem 'fog'
+gem 'devise'
+gem 'mini_magick'
+# Bootstrap
+gem 'twitter-bootswatch-rails', '~> 3.1.1'
+gem 'twitter-bootswatch-rails-helpers'
+gem 'therubyracer'   # javascript runtime。lessをコンパイルするために必要
+gem 'less-rails'     # Railsでlessを使えるようにする。Bootstrapがlessで書かれているため
+gem 'acts_as_follower'
