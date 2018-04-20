@@ -3,6 +3,7 @@ class TweetsController < ApplicationController
     @tweet = Tweet.new
     @tweet.images.build
     @tweets = Tweet.includes(:user).order("created_at DESC")
+    @users = current_user
   end
 
   def create
@@ -17,6 +18,11 @@ class TweetsController < ApplicationController
       :text,
       :user_id,
       images_attributes: [:content])
+  end
+
+  def user_params
+    params.require(:user).permit(
+      :id)
   end
 
 end

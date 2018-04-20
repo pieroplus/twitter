@@ -34,6 +34,27 @@ ActiveRecord::Schema.define(version: 20180417052052) do
   add_index "tweets", ["image_id"], name: "fk_rails_c4ac7c0255", using: :btree
   add_index "tweets", ["user_id"], name: "fk_rails_003928b7f5", using: :btree
 
+  create_table "images", force: :cascade do |t|
+    t.string   "content",    limit: 255, default: "", null: false
+    t.integer  "tweet_id",   limit: 4
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.string   "image",      limit: 255
+  end
+
+  create_table "tweets", force: :cascade do |t|
+    t.text     "text",       limit: 65535
+    t.integer  "image_id",   limit: 4
+    t.integer  "user_id",    limit: 4
+    t.integer  "retweet_id", limit: 4
+    t.integer  "reply_id",   limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "tweets", ["image_id"], name: "fk_rails_c4ac7c0255", using: :btree
+  add_index "tweets", ["user_id"], name: "fk_rails_003928b7f5", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255,   default: "", null: false
     t.string   "encrypted_password",     limit: 255,   default: "", null: false

@@ -26,8 +26,14 @@
     </div>
   </div>
 
-  <%= link_to "フォローする", "/follow/#{current_user.id}", method: :patch %>
-  <%= link_to "解除", "/unfollow/#{current_user.id}", method: :delete %>
+  <h1><%= @users.name %></h1>
+<% if current_user != @users　%>
+   <% if current_user.following?(@users) %>
+    <%= link_to "Unfollow", unfollow_user_path(@users) %>　
+   <% else %>
+    <%= link_to "Follow", follow_user_path(@users) %>
+   <% end %>
+<% end %>
 
 <footer>
 </footer>

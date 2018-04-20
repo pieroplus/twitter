@@ -262,7 +262,7 @@ GEM
       less (~> 2.6.0)
       sprockets (> 2, < 4)
       tilt
-    libv8 (3.16.14.19-x86_64-darwin-16)
+    libv8 (3.16.14.19)
     loofah (2.2.2)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -287,6 +287,12 @@ GEM
     pry (0.11.3)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
+    pry-byebug (3.6.0)
+      byebug (~> 10.0)
+      pry (~> 0.10)
+    pry-doc (0.13.4)
+      pry (~> 0.11)
+      yard (~> 0.9.11)
     pry-rails (0.3.6)
       pry (>= 0.10.4)
     rack (1.6.9)
@@ -387,6 +393,7 @@ GEM
       railties (>= 4.0)
       sprockets-rails (>= 2.0, < 4.0)
     xml-simple (1.1.5)
+    yard (0.9.12)
 
 PLATFORMS
   ruby
@@ -409,6 +416,8 @@ DEPENDENCIES
   less-rails
   mini_magick
   mysql2 (>= 0.3.13, < 0.5)
+  pry-byebug
+  pry-doc
   pry-rails
   rails (= 4.2.6)
   sass-rails (~> 5.0)
