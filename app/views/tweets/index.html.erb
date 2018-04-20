@@ -29,8 +29,8 @@
           <div class="contents__left__user__info">
             <img src="https://www.nihonpet-plus.co.jp/dog/img/top_dog009.jpg" class=" img-circle contents__left__user__info__img">
             <div class="contents__left__user__info__status">
-              <p class="contents__left__user__info__status__hn">犬男</p>
-              <a herf="#" class="contents__left__user__info__status__name">dog</a>
+              <p class="contents__left__user__info__status__hn"><%= current_user.name %> </p>
+              <a herf="users/#{current_user.id}" class="contents__left__user__info__status__name"><%= current_user.screen_name %></a>
               <div class="contents__left__user__info__status__block">
                 <div class="contents__left__user__info__status__block__tweet col-sm-4 col-md-4">
                   ツイート
@@ -56,12 +56,18 @@
       <div class="contents__main col-sm-6 col-md-6">
         <div class="contents__main__input bg-success">
           <img src="https://www.nihonpet-plus.co.jp/dog/img/top_dog009.jpg" class="img-circle contents__main__input__img">
-          <form class="contents__main__input__form">
-            <input type="text" placeholder="いまどうしてる？" class="contents__main__input__form__text">
-          </form>
+          <div class="tweet_area">
+            <%= form_for @tweet do |f| %>
+              <%= f.hidden_field :user_id, value: current_user.id %>
+              <%= f.text_field :text, id: :new_tweet , class: "contents__main__input__form__text"%>
+              <%= f.submit "ツイート", class: "tweet-btn btn-primary btn-success" %>
+              <% end %>
+          </div>
         </div>
         <div class="contents__main__tweet">
-          <%= render partial: "tweets/shared/tweet" %>
+          <% @tweets.each do |tweet| %>
+          <%= render partial: "tweets/shared/tweet",locals: { tweet: tweet } %>
+          <% end %>
         </div>
       </div>
       <div class="contents__right col-sm-3 col-md-3">
@@ -82,13 +88,18 @@
           <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
           <h4 class="modal-title">ツイートする</h4>
         </div>
-        <form class="modal-form clearfix">
+        <div class="modal-form clearfix">
           <div class="modal-image">
             <img src="https://www.nihonpet-plus.co.jp/dog/img/top_dog009.jpg" class="img-circle modal-image__icon">
           </div>
-          <textarea name="tweet" placeholder="いまどうしてる？" class="modal-body" style="resize: none;"></textarea>
-          <input type="submit", class="tweet-btn btn-primary btn-success", value="ツイート">
-        </form>
+          <div>
+          <%= form_for @tweet do |f| %>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+            <%= f.text_field :text, name:"tweet", class: "modal-body",style: "resize: none;",placeholder:"いまなにしてる？" %>
+          <%= f.submit "ツイート", class: "tweet-btn btn-primary btn-success" %>
+          <% end %>
+          </div>
+        </div>
       </div>
     </div>
   </div>

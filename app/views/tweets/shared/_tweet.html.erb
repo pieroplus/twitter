@@ -2,13 +2,13 @@
   <img src="https://code-schools.com/wp-content/uploads/2017/03/ruby.png" class="img-circle contents__main__tweet__content__thumbnail">
   <div class="contents__main__tweet__content__info">
     <div class="contents__main__tweet__content__info__wapper">
-      <%= link_to "#" do %>
-        <p class="contents__main__tweet__content__info__wapper__name">ruby @ruby</p>
+      <%= link_to "users/#{tweet.user.id}" do %>
+        <p class="contents__main__tweet__content__info__wapper__name"><%= tweet.user.name %> @<%= tweet.user.screen_name %></p>
       <% end %>
-      <p class="contents__main__tweet__content__info__wapper__date"> 2018年4月19日 10:00</p>
+      <p class="contents__main__tweet__content__info__wapper__date"> <%= tweet.created_at %></p>
     </div>
     <div class="contents__main__tweet__content__info__center">
-      ルビーは楽しー！
+      <%= simple_format(tweet.text) %>
     </div>
     <div class="contents__main__tweet__content__info__bottom">
       <div class="glyphicon glyphicon-comment col-sm-3 col-md-3"></div>
@@ -19,25 +19,3 @@
   </div>
 </div>
 <hr>
-<div class="contents__main__tweet__content clearfix">
-  <img src="https://code-schools.com/wp-content/uploads/2017/03/ruby.png" class="img-circle contents__main__tweet__content__thumbnail">
-  <div class="contents__main__tweet__content__info">
-    <div class="contents__main__tweet__content__info__wapper">
-      <%= link_to "#" do %>
-        <p class="contents__main__tweet__content__info__wapper__name">ruby @ruby</p>
-      <% end %>
-      <p class="contents__main__tweet__content__info__wapper__date"> 2018年4月19日 09:00</p>
-    </div>
-    <div class="contents__main__tweet__content__info__center">
-      さあ、ルビーを学ぼう！
-    </div>
-    <div class="contents__main__tweet__content__info__bottom">
-      <div class="glyphicon glyphicon-comment col-sm-3 col-md-3"></div>
-      <div class="glyphicon glyphicon-retweet col-sm-3 col-md-3"></div>
-      <div class="glyphicon glyphicon-heart col-sm-3 col-md-3"></div>
-      <div class="glyphicon glyphicon-envelope col-sm-3 col-md-3"></div>
-    </div>
-  </div>
-</div>
-<hr>
-
