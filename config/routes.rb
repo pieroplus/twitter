@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'tweets#index'
   get  'users/:id'  => 'users#show'
-  patch 'users/:id/follow' => 'users#follow'
-  delete 'users/:id/unfollow' => 'users#destroy'
+  post "/" => "tweets#create"
+
+  resources :tweets,only:[:index,:create]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
