@@ -9,11 +9,11 @@ Rails.application.routes.draw do
   patch 'users/:id/follow' => 'users#follow'
   delete 'users/:id/unfollow' => 'users#destroy'
 
-resources :users do
-  member do
-    get :follow
-    get :unfollow
-  end
+  resources :users do
+    member do
+      get :follow
+      get :unfollow
+    end
 end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

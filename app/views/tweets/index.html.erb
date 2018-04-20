@@ -30,7 +30,9 @@
             <img src="https://www.nihonpet-plus.co.jp/dog/img/top_dog009.jpg" class=" img-circle contents__left__user__info__img">
             <div class="contents__left__user__info__status">
               <p class="contents__left__user__info__status__hn"><%= current_user.name %> </p>
-              <a herf="users/#{current_user.id}" class="contents__left__user__info__status__name"><%= current_user.screen_name %></a>
+              <%= link_to "users/#{current_user.id}", class: "contents__left__user__info__status__name" do %>
+                 @<%= current_user.screen_name %>
+               <% end %>
               <div class="contents__left__user__info__status__block">
                 <div class="contents__left__user__info__status__block__tweet col-sm-4 col-md-4">
                   ツイート
