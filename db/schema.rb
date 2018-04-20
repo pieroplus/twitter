@@ -13,18 +13,26 @@
 
 ActiveRecord::Schema.define(version: 20180417052052) do
 
-  create_table "follows", force: :cascade do |t|
-    t.integer  "followable_id",   limit: 4,                   null: false
-    t.string   "followable_type", limit: 255,                 null: false
-    t.integer  "follower_id",     limit: 4,                   null: false
-    t.string   "follower_type",   limit: 255,                 null: false
-    t.boolean  "blocked",                     default: false, null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "images", force: :cascade do |t|
+    t.string   "content",    limit: 255
+    t.integer  "tweet_id",   limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.string   "image",      limit: 255
   end
 
-  add_index "follows", ["followable_id", "followable_type"], name: "fk_followables", using: :btree
-  add_index "follows", ["follower_id", "follower_type"], name: "fk_follows", using: :btree
+  create_table "tweets", force: :cascade do |t|
+    t.text     "text",       limit: 65535
+    t.integer  "image_id",   limit: 4
+    t.integer  "user_id",    limit: 4
+    t.integer  "retweet_id", limit: 4
+    t.integer  "reply_id",   limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "tweets", ["image_id"], name: "fk_rails_c4ac7c0255", using: :btree
+  add_index "tweets", ["user_id"], name: "fk_rails_003928b7f5", using: :btree
 
   create_table "images", force: :cascade do |t|
     t.string   "content",    limit: 255, default: "", null: false
