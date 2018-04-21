@@ -1,113 +1,54 @@
-<!-- <h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="users-edit">
+  <h2>ユーザー情報の変更<% resource_name.to_s.humanize %></h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    <div class="field">
+      <%= f.label :email ,"メールアドレス"%><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <div class="field">
+      <%= f.label :name ,"名前（ニックネーム）"%><br />
+      <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+    </div>
+
+    <!-- <div class="field"> -->
+      <!-- <%= f.label :icon ,"アイコン"%><br /> -->
+    <!-- </div> -->
+
+    <!-- <div class="field"> -->
+      <!-- <%= f.label :image ,"ヘッダー画像"%><br /> -->
+    <!-- </div> -->
+
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :password ,"パスワード"%><br /><i>(変更をしない場合は空白)</i><br />
+      <%= f.password_field :password, autofocus: true, autocomplete: "off", placeholder: "新しいパスワードを入力" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password ,"パスワード"%><br /><i>(変更をしない場合は空白)</i><br />
+      <%= f.password_field :confirmation_password, autofocus: true, autocomplete: "off", placeholder: "新しいパスワードを再入力" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :current_password ,"現在のパスワード"%><br />
+      <i>(変更を確認するために現在のパスワードが必要です)</i><br />
+      <%= f.password_field :current_password, autofocus: true, autocomplete: "off", placeholder: "現在のパスワードを入力"%>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "変更を保存" %>
+    </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
- -->
-<!-- render :action => "application", :layout => false %> -->
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8" />
-  <link rel="stylesheet" href="users_edit.css">
-  <title>twitter</title>
-</head>
-<body>
-  <div class="users-edit">
-    <header>
-    </header>
-    <h2>ユーザー情報の変更</h2>
-    <form class="user-edit">
-      <div class="field">
-        <p>メールアドレス</p>
-        <input type="email" placeholder="メールアドレスを入力してください"><br>
-      </div>
-
-      <div class="field">
-        <p>名前（ニックネーム）</p>
-        <input type="text" placeholder="名前を入力してください"><br>
-      </div>
-
-      <div class="field">
-        <p>アイコン</p>
-      </div>
-
-      <div class="field">
-        <p>ヘッダー画像</p>
-      </div>
-
-      <div class="field">
-        <p>パスワード（変更をしない場合は空白）</p>
-        <input type="password" placeholder="新しいパスワードを入力してください"><br>
-      </div>
-
-      <div class="field">
-        <p>パスワード確認用（変更をしない場合は空白）</p>
-        <input type="password" placeholder="新しいパスワードを入力してください（確認用）"><br>
-      </div>
-
-      <div class="field">
-        <div class="update-btn">
-          <a href="/users/update">変更を保存</a>
-        </div>
-      </div>
-
-      <div class="field">
-        <div class="back-btn">
-          <a href="/users/show">ホームへ戻る</a>
-        </div>
-      </div>
-
-      <div class="field">
-        <div class="mypage-btn">
-          <a href="/users/<%= current_user.id %>">マイページ</a>
-        </div>
-      </div>
-
-      <div class="field">
-        <div class="logout-btn">
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-        </div>
-      </div>
-    </form>
-  </div>
-</body>
-</html>
+  <%= link_to "ホームへ戻る", 'tweets#index'%>
+  <%= link_to "マイページへ", 'users#show' %>
+  <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+  <!-- <%= link_to "Back", :back %> -->
+</div>
