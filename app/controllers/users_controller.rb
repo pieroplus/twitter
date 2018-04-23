@@ -1,33 +1,18 @@
 class UsersController < ApplicationController
 
+  before_action :get_follow, only: :show
+
   def show
-    @users = User.find(params[:id])
+    @url = request.url
+    @user = User.find(params[:id])
+    @tweet = Tweet.new
+    @tweet.images.build
+    @tweets = Tweet.includes(:user).order("created_at DESC")
+    @recommends = User.where.not(id: @follow).where.not(id: current_user.id)
   end
 
-  def follow
-    @user = User.find(params[:id])
-    if current_user
-      if current_user == @user　
-        flash[:error] = "You cannot follow yourself."
-      else
-        current_user.follow(@user)
-        flash[:notice] = "You are now following #{@user.name}."
-        redirect_to @user
-      end
-    else
-      redirect_to root_path
-    end
+  def get_follow
+    @follow = current_user.all_following
   end
 
-  def unfollow
-    @user = User.find(params[:id])
-    if current_user
-      current_user.stop_following(@user)
-      flash[:notice] = "You are no longer following #{@user.name}."
-      redirect_to @user
-    else
-      flash[:error] = "You must <a href='/users/sign_in'>login</a> to unfollow #{@user.name}.".html_safe
-      redirect_to @user
-    end
-  end
 end

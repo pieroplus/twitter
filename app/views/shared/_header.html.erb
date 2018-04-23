@@ -1,0 +1,42 @@
+<div class="header" role="navigation">
+  <div class="header__left col-sm-6 col-md-6">
+    <ul class="header__left__nav nav navbar-nav">
+      <li><a href=" / "><span class="glyphicon glyphicon-home"></span>ホーム</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-flash"></span>モーメント</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-bell"></span>通知</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-envelope"></span>メッセージ</a></li>
+    </ul>
+  </div>
+  <div class="header__center col-sm-1 col-md-1">
+    <a href="#"><div class="glyphicon glyphicon-home"></div></a>
+  </div>
+  <div class="header__right col-sm-5 col-md-5">
+    <form class="header__right__form">
+      <input type="text" placeholder="キーワード検索" class="header__right__form__search">
+      <img src="https://www.nihonpet-plus.co.jp/dog/img/top_dog009.jpg" class="img-circle header__right__form__img">
+      <button type="button" class="img-circle header__right__form__btn btn-primary btn-sm btn-success btn-round" data-toggle="modal" data-target="#input">ツイート</button>
+    </form>
+  </div>
+</div>
+<div class="modal fade" id="input" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+        <h4 class="modal-title">ツイートする</h4>
+      </div>
+      <div class="modal-form clearfix">
+        <div class="modal-image">
+          <img src="https://www.nihonpet-plus.co.jp/dog/img/top_dog009.jpg" class="img-circle modal-image__icon">
+        </div>
+        <div>
+        <%= form_for @tweet do |f| %>
+          <%= f.hidden_field :user_id, value: current_user.id %>
+          <%= f.text_field :text, class: "modal-body",style: "resize: none;",placeholder:"いまなにしてる？" %>
+        <%= f.submit "ツイート", class: "tweet-btn btn-primary btn-success" %>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
