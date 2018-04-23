@@ -4,6 +4,7 @@ class TweetsController < ApplicationController
     @tweet.images.build
     @tweets = Tweet.includes(:user).order("created_at DESC")
     @users = current_user
+    @tweetnumber = Tweet.where(user_id: current_user.id).count(:user_id)
   end
 
   def create
@@ -21,8 +22,7 @@ class TweetsController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(
-      :id)
+    params.require(:user).permit(:id)
   end
 
 end
