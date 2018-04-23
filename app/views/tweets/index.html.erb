@@ -1,27 +1,7 @@
 <html>
   <body>
-    <div class="header" role="navigation">
-      <div class="header__left col-sm-6 col-md-6">
-        <ul class="header__left__nav nav navbar-nav">
-          <li><a href="#"><span class="glyphicon glyphicon-home"></span>ホーム</a></li>
-          <li><a href="#"><span class="glyphicon glyphicon-flash"></span>モーメント</a></li>
-          <li><a href="#"><span class="glyphicon glyphicon-bell"></span>通知</a></li>
-          <li><a href="#"><span class="glyphicon glyphicon-envelope"></span>メッセージ</a></li>
-        </ul>
-      </div>
-      <div class="header__center col-sm-1 col-md-1">
-        <a href="#"><div class="glyphicon glyphicon-home"></div></a>
-      </div>
-      <div class="header__right col-sm-5 col-md-5">
-        <form class="header__right__form">
-          <input type="text" placeholder="キーワード検索" class="header__right__form__search">
-          <img src="https://www.nihonpet-plus.co.jp/dog/img/top_dog009.jpg" class="img-circle header__right__form__img">
-          <button type="button" class="img-circle header__right__form__btn btn-primary btn-sm btn-success btn-round" data-toggle="modal" data-target="#input">ツイート</button>
-        </form>
-      </div>
-    </div>
-      <div class="main-content">
-    </nav>
+    <%= render partial: "shared/header" %>
+  <div class="main-content">
     <div class="container-fluid contents">
       <div class="contents__left col-sm-3 col-md-3 bg-light bg">
         <div class="cotents__left__user">
@@ -30,28 +10,25 @@
             <img src="https://www.nihonpet-plus.co.jp/dog/img/top_dog009.jpg" class=" img-circle contents__left__user__info__img">
             <div class="contents__left__user__info__status">
               <p class="contents__left__user__info__status__hn"><%= current_user.name %> </p>
-              <a herf="users/#{current_user.id}" class="contents__left__user__info__status__name"><%= current_user.screen_name %></a>
+              <%= link_to "@#{current_user.screen_name}", user_path(current_user), class: "contents__left__user__info__status__name" %>
               <div class="contents__left__user__info__status__block">
                 <div class="contents__left__user__info__status__block__tweet col-sm-4 col-md-4">
                   ツイート
                   1
                 </div>
                 <div class="contents__left__user__info__status__block__follow col-sm-4 col-md-4">
-                  フォロー数
+                  フォロー
                   <%= @users.follow_count %>
                 </div>
                 <div class="contents__left__user__info__status__block__follower col-sm-4 col-md-4">
-                  フォロワー数
+                  フォロワー
                   <%= @users.followers_count %>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="contents__left__trend">
-          <h4>おすすめトレンド</h4>
-          <%= render partial: "tweets/shared/trend" %>
-        </div>
+        <%= render partial: "shared/trend" %>
       </div>
       <div class="contents__main col-sm-6 col-md-6">
         <div class="contents__main__input bg-success">
@@ -66,40 +43,18 @@
         </div>
         <div class="contents__main__tweet">
           <% @tweets.each do |tweet| %>
-          <%= render partial: "tweets/shared/tweet",locals: { tweet: tweet } %>
+          <%= render partial: "shared/tweet",locals: { tweet: tweet } %>
           <% end %>
         </div>
       </div>
       <div class="contents__right col-sm-3 col-md-3">
         <div class="contents__right__recommend">
           <h4>おすすめユーザー</h4>
-            <%= render partial: "tweets/shared/recommend" %>
-          </div>
-        <div class="contents__right__about">
-          <%= render partial: "tweets/shared/about" %>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="modal fade" id="input" tabindex="-1">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
-          <h4 class="modal-title">ツイートする</h4>
-        </div>
-        <div class="modal-form clearfix">
-          <div class="modal-image">
-            <img src="https://www.nihonpet-plus.co.jp/dog/img/top_dog009.jpg" class="img-circle modal-image__icon">
-          </div>
-          <div>
-          <%= form_for @tweet do |f| %>
-            <%= f.hidden_field :user_id, value: current_user.id %>
-            <%= f.text_field :text, class: "modal-body",style: "resize: none;",placeholder:"いまなにしてる？" %>
-          <%= f.submit "ツイート", class: "tweet-btn btn-primary btn-success" %>
+          <% @recommends.each do |recommend| %>
+            <%= render partial: "shared/recommend", locals: {recommend: recommend} %>
           <% end %>
-          </div>
         </div>
+        <%= render partial: "tweets/shared/about" %>
       </div>
     </div>
   </div>

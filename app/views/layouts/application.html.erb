@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
@@ -7,6 +7,8 @@
     <title><%= content_for?(:title) ? yield(:title) : "twitter" %></title>
     <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
     <%= stylesheet_link_tag "flatly", :media => "all" %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
 
     <%= csrf_meta_tags %>
 

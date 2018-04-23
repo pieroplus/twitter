@@ -1,9 +1,12 @@
 class TweetsController < ApplicationController
+
+  before_action :get_followuser
   def index
     @tweet = Tweet.new
     @tweet.images.build
     @tweets = Tweet.includes(:user).order("created_at DESC")
     @users = current_user
+    @recommends = User.where.not(id: @follow).where.not(id: current_user.id)
   end
 
   def create
@@ -23,6 +26,10 @@ class TweetsController < ApplicationController
   def user_params
     params.require(:user).permit(
       :id)
+  end
+
+  def get_followuser
+    @follow = current_user.all_following
   end
 
 end
