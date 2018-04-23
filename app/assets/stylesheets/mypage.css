@@ -58,9 +58,6 @@ header {
 
 }
 
-
-
-
 .profilecanopy-inner {
   background-color: #3399FF;
 /*  height: 300px;*/
@@ -81,9 +78,15 @@ header {
 .contents {
   background-color: #EEEEEE;
   height: 1000px;
-  width: 1000px;
 /*  padding: 0 auto;
   margin: ;*/
+}
+
+.left-contents {
+  background-color: #FFFFFF;
+  height: 300px;
+  width: 300px;
+  float: left;
 }
 
 footer {

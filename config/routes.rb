@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  root to: 'tweets#index'
-  resources :users, only: [:show]
+  root 'tweets#index'
+  resources :users, only: [:show, :update]
 end
