@@ -7,12 +7,18 @@
     <%= devise_error_messages! %>
 
     <div class="field">
-      <%= f.label :email %><br />
+      <%= f.text_field :name, placeholder: "アカウントの名前", class: "input" %>
+    </div>
+
+    <div class="field">
+      <%= f.text_field :screen_name, placeholder: "アカウントのID", class: "input" %>
+    </div>
+
+    <div class="field">
       <%= f.email_field :email, placeholder: "メールアドレス", class: "input" %>
     </div>
 
     <div class="field">
-      <%= f.label :password %>
       <% if @validatatable %>
       <em>(<%= @minimum_password_length %> characters minimum)</em>
       <% end %><br />
@@ -20,7 +26,6 @@
     </div>
 
     <div class="field">
-      <%= f.label :password_confirmation %><br />
       <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "パスワードの再確認" , class: "input" %>
     </div>
 
