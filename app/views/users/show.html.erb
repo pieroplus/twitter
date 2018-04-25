@@ -1,54 +1,52 @@
-<!DOCTYPE html>
 <html>
-<head>
-  <title>Twitter</title>
-  <%= stylesheet_link_tag "style"%>
-  <link href="/stylesheets/mypage.css" media="screen" rel="stylesheet" type="text/css" />
-  <%= javascript_include_tag 'application' %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <header>
-    <div class="header__lists">
-      <li>
-        <ul>
-          <%= link_to "ホーム", root_path %>
+  <body style="background-color:#EEEEEE;">
+    <%= render partial: "shared/header" %>
+      <div class="mypage">
+        <img src="http://card-professor.jp/wp/wp-content/uploads/2016/02/baseball-collaboration.jpg" class="mypage__img">
+        <div class="mypage__info clearfix">
+        <img src="https://www.nihonpet-plus.co.jp/dog/img/top_dog009.jpg" class="img-circle mypage__info__img">
+        <ul class="mypage__info__nav">
+          <li class="mypage__info__nav__list">ツイート</br></li>
+          <li class="mypage__info__nav__list">フォロー</br><%= @user.follow_count %></li>
+          <li class="mypage__info__nav__list">フォロワー</li>
+          <li class="mypage__info__nav__list">いいね</li>
+          <li class="mypage__info__nav__list"><a href="/users/edit">プロフィール編集</a></li>
         </ul>
-        <ul>
-          モーメント
-        </ul>
-        <ul>
-          通知
-        </ul>
-        <ul>
-          メッセージ
-        </ul>
-      </li>
-    </div>
-  </header>
-  <% yield %>
-  <div class="profilecanopy-inner">
-    <div class="profilecanopy-header">
-    </div>
-    <div class="profilecanopy-navbar">
-      <li>
-        <a href="/users/edit">プロフィール編集</a>
-      </li>
-    </div>
-  </div>
-
-  <div class="contents">
-    <span class="user-name">
-    <span class="screenname">
-      @#{current.user_name}
-    </span>
-  </div>
-
-<footer>
-</footer>
-<%= yield %>
-
-</body>
+        <% if current_user != @user %>
+          <% if current_user.following?(@user) %>
+            <%= link_to "フォロー中", unfollow_user_path(@user), class: "mypage__info__follow" %>
+          <% else %>
+            <%= link_to "フォローする", follow_user_path(@user), class: "mypage__info__unfollow"  %>
+          <% end %>
+        <% end %>
+        </div>
+      </div>
+      <div class="mypage__content">
+        <div class="mypage__content__left  col-sm-3 col-md-3 bg-light bg">
+          <%= render partial: 'users/shared/userinfo' %>
+        </div>
+        <div class="mypage__content__center col-sm-6 col-md-6">
+          <div class="mypage__content__center__link clearfix">
+            <ul class="mypage__content__center__link__nav  nav navbar-nav">
+              <li><a href="#">ツイート</a></li>
+              <li><a href="#">ツイートと返信</a></li>
+              <li><a href="#">メディア</a></li>
+            </ul>
+          </div>
+          <div class="mypage__content__center__tweet">
+            <% @tweets.each do |tweet| %>
+              <%= render partial: "shared/tweet",locals: { tweet: tweet } %>
+            <% end %>
+          </div>
+        </div>
+        <div class="mypage__content__right col-sm-3 col-md-3">
+          <div class="mypage__content__right__recommend">
+            <h4>おすすめユーザー</h4>
+              <% @recommends.each do |recommend| %>
+                <%= render partial: "shared/recommend", locals: {recommend: recommend} %>
+              <% end %>
+          <%= render partial: "shared/trend" %>
+        </div>
+      </div>
+  </body>
 </html>
-
-

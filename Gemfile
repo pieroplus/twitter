@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
+gem "font-awesome-rails"
 
+gem 'pry-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
 # Use mysql as the database for Active Record
@@ -46,15 +48,24 @@ group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 
+  gem 'pry-rails'
+  gem 'pry-byebug'
+  gem 'pry-doc'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
-
+  gem 'spring', '~> 1.6.3'
 end
 
 group :production do
-  gem 'unicorn'
+  gem 'unicorn', '~> 5.3.0'
 end
 gem 'pry-rails'
 gem 'carrierwave'
 gem 'fog'
 gem 'devise'
+gem 'mini_magick'
+# Bootstrap
+gem 'twitter-bootswatch-rails', '~> 3.1.1'
+gem 'twitter-bootswatch-rails-helpers'
+gem 'therubyracer'   # javascript runtime。lessをコンパイルするために必要
+gem 'less-rails'     # Railsでlessを使えるようにする。Bootstrapがlessで書かれているため
+gem 'acts_as_follower'

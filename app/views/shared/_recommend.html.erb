@@ -1,0 +1,15 @@
+<div class="user clearfix">
+  <img src="http://trendnews.tokyo/wp/wp-content/uploads/2017/03/komatsutop_R.jpg" class="img-circle   user__img">
+  <div class="user__info">
+    <%= link_to user_path(recommend.id) do %>
+      <p><%= recommend.name %> @<%= recommend.screen_name %></p>
+    <% end %>
+      <% if current_user.following?(recommend) %>
+        <%= link_to "フォロー中", unfollow_user_path(recommend), class: "mypage__info__follow" %>
+      <% else %>
+        <%= link_to "フォローする", follow_user_path(recommend), class: "mypage__info__unfollow"  %>
+    <% end %>
+  </div>
+</div>
+<hr>
+

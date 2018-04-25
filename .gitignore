@@ -16,3 +16,10 @@ config/secrets.yml
 /test/
 app/assets/javascripts/tweets.coffee
 app/helpers/tweets_helper.rb
+
+test/models/image_test.rb
+
+test/models/tweet_test.rb
+
+
+config/locales/en 18.07.53.yml

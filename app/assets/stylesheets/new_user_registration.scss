@@ -13,6 +13,18 @@
   }
   .edit_user {
     .field {
+      text-align: center;
+      border:0;
+      padding:10px;
+      font-size:2px;
+      margin:0 auto;
+      width:300px;
+      -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
+      border-radius: 3px;
+      #placeholder{
+        font-size: 50px;
+      }
       p {
         padding-left: 10px;
       }

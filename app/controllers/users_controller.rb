@@ -1,13 +1,17 @@
 class UsersController < ApplicationController
-
+  before_action :get_follow, only: :show
+  before_action :get_user
   def index
   end
 
   def show
-    # @screenname = user.screenname
     @name = current_user.name
     @users = User.find(params[:id])
-    # @tweets = Tweet.where(user_id: current_user.id)
+    @url = request.url
+    @tweet = Tweet.new
+    @tweet.images.build
+    @tweets = @user.tweets.order("created_at DESC")
+    @recommends = User.where.not(id: @follow).where.not(id: current_user.id)
   end
 
   def edit
@@ -27,7 +31,16 @@ class UsersController < ApplicationController
       render :edit
     end
   end
-  private
+
+  def get_follow
+    @follow = current_user.all_following
+  end
+
+  def get_user
+    @user = User.find(params[:id])
+  end
+
+    private
   def user_params
     params.require(:user).permit(:name,:email)
   end
