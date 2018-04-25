@@ -12,8 +12,7 @@
     <div class="header__lists">
       <li>
         <ul>
-          ホーム
-          <% link_to "ホーム", :controller => "users", :action => "show" %>
+          <%= link_to "ホーム", root_path %>
         </ul>
         <ul>
           モーメント
@@ -33,16 +32,16 @@
     </div>
     <div class="profilecanopy-navbar">
       <li>
-        プロフィール編集
-
         <a href="/users/edit">プロフィール編集</a>
-          = link_to edit_user_path(current_user) do
       </li>
     </div>
   </div>
 
   <div class="contents">
-
+    <span class="user-name">
+    <span class="screenname">
+      @#{current.user_name}
+    </span>
   </div>
 
 <footer>

@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   def show
     # @screenname = user.screenname
     @name = current_user.name
+    @users = User.find(params[:id])
     # @tweets = Tweet.where(user_id: current_user.id)
   end
 
