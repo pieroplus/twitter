@@ -1,0 +1,39 @@
+<html>
+  <body style="background-color:#EEEEEE;">
+    <%= render partial: "shared/header" %>
+    <%= render partial: "shared/mypage" %>
+    <div class="following">
+      <div class="following__left col-sm-3 col-md-3 bg-light bg">
+        <%= render partial: 'users/shared/userinfo' %>
+      </div>
+    </div>
+    <div class="following__main col-sm-9 col-md-9">
+      <% @follow.each do |user| %>
+        <div class="following__main__user col-sm-4 col-md-4">
+          <img src="http://card-professor.jp/wp/wp-content/uploads/2016/02/baseball-collaboration.jpg" class="following__main__user__bgimg">
+          <div class="following__main__user__info">
+            <img src="https://www.nihonpet-plus.co.jp/dog/img/top_dog009.jpg" class=" img-circle following__main__user__info__img">
+            <div class="following__main__user__info__status col-sm-4 col-md-4">
+              <div class="following__main__user__info__status__hn">
+                <%= user.name %>
+              </div>
+              <div class="following__main__user__info__status__name">
+                <%= link_to "@#{user.screen_name}", user_path(user.id) %>
+              </div>
+            </div>
+            <div class="following__main__user__info__btn col-sm-8 col-md-8">
+              <% if current_user.following?(user) %>
+                <%= link_to "フォロー中", unfollow_user_path(user), class: "following__main__user__info__btn__follow" %>
+              <% else %>
+               <%= link_to "フォローする", follow_user_path(user), class: "following__main__user__info__btn__unfollow"  %>
+              <% end %>
+            </div>
+            <div class="following__main__user__info__status__intro">
+              <p class="following__main__user__info__status__intro__text">よろしくね！
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </body>
+</html>

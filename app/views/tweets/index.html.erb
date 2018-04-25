@@ -17,8 +17,10 @@
                   1
                 </div>
                 <div class="contents__left__user__info__status__block__follow col-sm-4 col-md-4">
-                  フォロー
-                  <%= @users.follow_count %>
+                  <%= link_to "/users/#{current_user.id}/followings", method: :"GET" do %>
+                    フォロー
+                    <%= @users.follow_count %>
+                  <% end %>
                 </div>
                 <div class="contents__left__user__info__status__block__follower col-sm-4 col-md-4">
                   フォロワー

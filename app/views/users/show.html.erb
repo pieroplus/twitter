@@ -1,45 +1,27 @@
 <html>
   <body style="background-color:#EEEEEE;">
     <%= render partial: "shared/header" %>
-      <div class="mypage">
-        <img src="http://card-professor.jp/wp/wp-content/uploads/2016/02/baseball-collaboration.jpg" class="mypage__img">
-        <div class="mypage__info clearfix">
-        <img src="https://www.nihonpet-plus.co.jp/dog/img/top_dog009.jpg" class="img-circle mypage__info__img">
-        <ul class="mypage__info__nav">
-          <li class="mypage__info__nav__list">ツイート</br></li>
-          <li class="mypage__info__nav__list">フォロー</br><%= @user.follow_count %></li>
-          <li class="mypage__info__nav__list">フォロワー</li>
-          <li class="mypage__info__nav__list">いいね</li>
-        </ul>
-        <% if current_user != @user %>
-          <% if current_user.following?(@user) %>
-            <%= link_to "フォロー中", unfollow_user_path(@user), class: "mypage__info__follow" %>
-          <% else %>
-            <%= link_to "フォローする", follow_user_path(@user), class: "mypage__info__unfollow"  %>
-          <% end %>
-        <% end %>
-        </div>
-      </div>
-      <div class="mypage__content">
-        <div class="mypage__content__left  col-sm-3 col-md-3 bg-light bg">
+    <%= render partial: "shared/mypage" %>
+      <div class="content">
+        <div class="content__left  col-sm-3 col-md-3 bg-light bg">
           <%= render partial: 'users/shared/userinfo' %>
         </div>
-        <div class="mypage__content__center col-sm-6 col-md-6">
-          <div class="mypage__content__center__link clearfix">
-            <ul class="mypage__content__center__link__nav  nav navbar-nav">
+        <div class="content__center col-sm-6 col-md-6">
+          <div class="content__center__link clearfix">
+            <ul class="content__center__link__nav  nav navbar-nav">
               <li><a href="#">ツイート</a></li>
               <li><a href="#">ツイートと返信</a></li>
               <li><a href="#">メディア</a></li>
             </ul>
           </div>
-          <div class="mypage__content__center__tweet">
+          <div class="content__center__tweet">
             <% @tweets.each do |tweet| %>
               <%= render partial: "shared/tweet",locals: { tweet: tweet } %>
             <% end %>
           </div>
         </div>
-        <div class="mypage__content__right col-sm-3 col-md-3">
-          <div class="mypage__content__right__recommend">
+        <div class="content__right col-sm-3 col-md-3">
+          <div class="content__right__recommend">
             <h4>おすすめユーザー</h4>
               <% @recommends.each do |recommend| %>
                 <%= render partial: "shared/recommend", locals: {recommend: recommend} %>

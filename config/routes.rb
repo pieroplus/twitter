@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root to: 'tweets#index'
   get  'users/:id'  => 'users#show'
   post "/" => "tweets#create"
+  get 'users/:id/followings' => 'followings#show'
 
   resources :tweets,only:[:index,:create]
   patch 'users/:id/follow' => 'users#follow'
