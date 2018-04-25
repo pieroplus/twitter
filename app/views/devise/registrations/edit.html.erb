@@ -47,15 +47,10 @@
     </div>
   <% end %>
 
-<<<<<<< Updated upstream
-  <%= link_to "ホームへ戻る", 'tweets#index'%>
-  <%= link_to "マイページへ", 'users#show' %>
-  <a href="/users/:id">マイページへ</a>
 
-=======
   <%= link_to "ホームへ戻る", root_path %>
   <%= link_to "マイページへ", "/users/#{@user.id}", method: :get %>
->>>>>>> Stashed changes
+
   <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
   <%= link_to "Back", :back %>
 </div>
