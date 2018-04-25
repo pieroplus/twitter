@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
-
   devise_for :users
+
   root to: 'tweets#index'
   get  'users/:id'  => 'users#show'
   post "/" => "tweets#create"
   get 'users/:id/followings' => 'followings#show'
+
+  resources :users, only: [:update]
 
   resources :tweets,only:[:index,:create]
   patch 'users/:id/follow' => 'users#follow'

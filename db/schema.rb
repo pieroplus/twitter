@@ -66,6 +66,12 @@ ActiveRecord::Schema.define(version: 20180417052052) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip",     limit: 255
     t.string   "last_sign_in_ip",        limit: 255
+    t.text     "introduction",           limit: 65535
+    t.text     "address",                limit: 65535
+    t.text     "user_url",               limit: 65535
+    t.text     "birthday",               limit: 65535
+    t.string   "icon_img",               limit: 255
+    t.string   "header_img",             limit: 255
     t.datetime "created_at",                                        null: false
     t.datetime "updated_at",                                        null: false
     t.text     "name",                   limit: 65535
