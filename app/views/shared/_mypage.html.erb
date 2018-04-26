@@ -13,6 +13,8 @@
     <li class="mypage__info__nav__list">フォロワー</li>
     <li class="mypage__info__nav__list">いいね</li>
   </ul>
+  <div class="user__edit__btn">
+    <a type="button" class="btn btn-success" href="/users/edit" id="user-edit-btn">プロフィール編集</a>
   <% if current_user != @user %>
     <% if current_user.following?(@user) %>
       <%= link_to "フォロー中", unfollow_user_path(@user), class: "mypage__info__follow" %>
