@@ -1,4 +1,15 @@
 <div class="content clearfix">
+  <% if user_signed_in? && current_user.id == tweet.user_id %>
+    <div class="btn-group pull-right" role="group">
+      <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    ∨
+      </button>
+      <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+        <a class="dropdown-item" href="#"></a>
+        <%= link_to 'ツイートを削除', tweet_path(tweet), method: :delete %>
+      </div>
+    </div>
+  <% end %>
   <%= image_tag tweet.user.icon_image_url, class:"img-circle content__thumbnail" %>
   <div class="content__info">
     <div class="content__info__wapper">
