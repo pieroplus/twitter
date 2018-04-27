@@ -27,7 +27,7 @@
       </div>
       <div class="modal-form clearfix">
         <div class="modal-image">
-          <img src="https://www.nihonpet-plus.co.jp/dog/img/top_dog009.jpg" class="img-circle modal-image__icon">
+          <%= image_tag current_user.icon_image_url, class:"img-circle modal-image__icon" %>
         </div>
         <div>
         <%= form_for @tweet do |f| %>
