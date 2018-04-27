@@ -5,7 +5,7 @@
     <div class="container-fluid contents">
       <div class="contents__left col-sm-3 col-md-3 bg-light bg">
         <div class="cotents__left__user">
-          <%= image_tag current_user.header_image_url, class:"img-circle contents__left__user__bgimg" %>
+          <%= image_tag current_user.header_image_url, class:"contents__left__user__bgimg" %>
           <div class="contents__left__user__info">
             <%= image_tag current_user.icon_image_url, class:"img-circle contents__left__user__info__img" %>
             <div class="contents__left__user__info__status">
@@ -41,7 +41,11 @@
             <%= form_for @tweet do |f| %>
               <%= f.hidden_field :user_id, value: current_user.id %>
               <%= f.text_field :text, id: :new_tweet , class: "contents__main__input__form__text", placeholder:"いまなにしてる？"%>
+              <%= f.fields_for :images do |i| %>
+                  <%= i.label :content, "画" %>
+                  <%= i.file_field :content, class:"hidden" %>
               <%= f.submit "ツイート", class: "tweet-btn btn-primary btn-success" %>
+                <% end %>
               <% end %>
           </div>
         </div>
