@@ -10,6 +10,7 @@ class TweetsController < ApplicationController
     @users = User.all
     @user = current_user
     @recommends = User.where.not(id: @follow).where.not(id: current_user.id)
+    @images = @tweet.images
   end
 
   def create
