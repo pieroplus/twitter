@@ -29,12 +29,18 @@
         <div class="modal-image">
           <%= image_tag current_user.icon_image_url, class:"img-circle modal-image__icon" %>
         </div>
-        <div>
-        <%= form_for @tweet do |f| %>
-          <%= f.hidden_field :user_id, value: current_user.id %>
-          <%= f.text_field :text, class: "modal-body",style: "resize: none;",placeholder:"いまなにしてる？" %>
-        <%= f.submit "ツイート", class: "tweet-btn btn-primary btn-success" %>
-        <% end %>
+        <div class="modal-form_for">
+          <%= form_for @tweet do |f| %>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+            <%= f.text_field :text, class: "modal-form_for__body",style: "resize: none;",placeholder:"いまなにしてる？" %>
+            <%= f.fields_for :images do |i| %>
+              <%= i.label :content do %>
+                <div class="modal-form_for__icon glyphicon glyphicon-picture"></div>
+              <% end %>
+              <%= i.file_field :content, class:"hidden" %>
+              <%= f.submit "ツイート", class: "modal-form_for__btn btn-primary btn-success" %>
+            <% end %>
+          <% end %>
         </div>
       </div>
     </div>
