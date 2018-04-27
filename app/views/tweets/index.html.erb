@@ -14,7 +14,7 @@
               <div class="contents__left__user__info__status__block">
                 <div class="contents__left__user__info__status__block__tweet col-sm-4 col-md-4">
                   ツイート
-                  1
+                  <%= @tweetnumber %>
                 </div>
                 <div class="contents__left__user__info__status__block__follow col-sm-4 col-md-4">
                   <%= link_to "/users/#{current_user.id}/followings", method: :"GET" do %>
@@ -41,7 +41,7 @@
             <%= form_for @tweet do |f| %>
               <%= f.hidden_field :user_id, value: current_user.id %>
               <%= f.text_field :text, id: :new_tweet , class: "contents__main__input__form__text", placeholder:"いまなにしてる？"%>
-              <%= f.submit "ツイート", class: "tweet_area_btn btn-primary btn-success" %>
+              <%= f.submit "ツイート", class: "tweet-btn btn-primary btn-success" %>
               <% end %>
           </div>
         </div>

@@ -48,9 +48,9 @@
   <% end %>
 
 
-  <%= link_to "ホームへ戻る", root_path %>
-  <%= link_to "マイページへ", "/users/#{@user.id}", method: :get %>
+  <%= link_to "ホームへ戻る", root_path, class:"link_btn" %>
+  <%= link_to "マイページへ", "/users/#{@user.id}", method: :get, class:"link_btn" %>
 
-  <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-  <%= link_to "Back", :back %>
+  <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"link_btn" %>
+  <%= link_to "Back", :back, class:"link_btn" %>
 </div>
