@@ -1,0 +1,39 @@
+<html>
+  <body style="background-color:#EEEEEE;">
+    <%= render partial: "shared/header" %>
+    <%= render partial: "shared/mypage" %>
+    <div class="follow">
+      <div class="follow__left col-sm-3 col-md-3 bg-light bg">
+        <%= render partial: 'users/shared/userinfo' %>
+      </div>
+    </div>
+    <div class="follow__main col-sm-9 col-md-9">
+      <% @follow.each do |user| %>
+        <div class="follow__main__user col-sm-4 col-md-4">
+          <%= image_tag user.header_image_url, class:"follow__main__user__bgimg" %>
+          <div class="follow__main__user__info">
+            <%= image_tag user.icon_image_url, class:"img-circle follow__main__user__info__img" %>
+            <div class="follow__main__user__info__btn">
+              <% if current_user.following?(user) %>
+                <%= link_to "フォロー中", unfollow_user_path(user), class: "follow__main__user__info__btn__follow" %>
+              <% else %>
+               <%= link_to "フォローする", follow_user_path(user), class: "follow__main__user__info__btn__unfollow"  %>
+              <% end %>
+            </div>
+            <div class="follow__main__user__info__status">
+              <div class="follow__main__user__info__status__hn">
+                <%= user.name %>
+              </div>
+              <div class="follow__main__user__info__status__name">
+                <%= link_to "@#{user.screen_name}", user_path(user.id) %>
+              </div>
+            </div>
+            <div class="follow__main__user__info__status__intro">
+              <p class="follow__main__user__info__status__intro__text">よろしくね！</p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </body>
+</html>

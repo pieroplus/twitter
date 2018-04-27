@@ -1,8 +1,9 @@
 # config valid only for current version of Capistrano
-lock '3.10.1'
+lock '3.10.2'
 
 set :application, 'twitter'
 set :repo_url,  'git@github.com:pieroplus/twitter.git'
+set :log_level, :debug
 
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
 

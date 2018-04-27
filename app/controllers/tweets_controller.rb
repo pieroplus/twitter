@@ -2,11 +2,13 @@ class TweetsController < ApplicationController
 
   before_action :move_to_index, except: :index
   before_action :get_followuser, only: :index
+
   def index
     @tweet = Tweet.new
     @tweet.images.build
     @tweets = Tweet.where(user_id: @indicate).order("created_at DESC")
-    @users = current_user
+    @users = User.all
+    @user = current_user
     @recommends = User.where.not(id: @follow).where.not(id: current_user.id)
   end
 
@@ -30,6 +32,10 @@ class TweetsController < ApplicationController
       :text,
       :user_id,
       images_attributes: [:content])
+  end
+
+  def move_to_index
+    redirect_to action: :index unless user_signed_in?
   end
 
   def move_to_index

@@ -10,4 +10,7 @@ class User < ActiveRecord::Base
   acts_as_follower
   has_many :tweets
 
+  mount_uploader :icon_image, IconImageUploader
+  mount_uploader :header_image, HeaderImageUploader
+
 end

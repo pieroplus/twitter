@@ -5,26 +5,28 @@
     <div class="container-fluid contents">
       <div class="contents__left col-sm-3 col-md-3 bg-light bg">
         <div class="cotents__left__user">
-          <img src="http://card-professor.jp/wp/wp-content/uploads/2016/02/baseball-collaboration.jpg" class="contents__left__user__bgimg">
+          <%= image_tag current_user.header_image_url, class:"img-circle contents__left__user__bgimg" %>
           <div class="contents__left__user__info">
-            <img src="https://www.nihonpet-plus.co.jp/dog/img/top_dog009.jpg" class=" img-circle contents__left__user__info__img">
+            <%= image_tag current_user.icon_image_url, class:"img-circle contents__left__user__info__img" %>
             <div class="contents__left__user__info__status">
               <p class="contents__left__user__info__status__hn"><%= current_user.name %> </p>
               <%= link_to "@#{current_user.screen_name}", user_path(current_user), class: "contents__left__user__info__status__name" %>
               <div class="contents__left__user__info__status__block">
                 <div class="contents__left__user__info__status__block__tweet col-sm-4 col-md-4">
                   ツイート
-                  1
+                  <%= @tweets.where(user_id: current_user.id).count(:user_id) %>
                 </div>
                 <div class="contents__left__user__info__status__block__follow col-sm-4 col-md-4">
                   <%= link_to "/users/#{current_user.id}/followings", method: :"GET" do %>
                     フォロー
-                    <%= @users.follow_count %>
+                    <%= @user.follow_count %>
                   <% end %>
                 </div>
                 <div class="contents__left__user__info__status__block__follower col-sm-4 col-md-4">
-                  フォロワー
-                  <%= @users.followers_count %>
+                  <%= link_to "/users/#{current_user.id}/followers", method: :"GET" do %>
+                    フォロワー
+                    <%= @user.followers_count %>
+                  <% end %>
                 </div>
               </div>
             </div>
@@ -34,12 +36,12 @@
       </div>
       <div class="contents__main col-sm-6 col-md-6">
         <div class="contents__main__input bg-success">
-          <img src="https://www.nihonpet-plus.co.jp/dog/img/top_dog009.jpg" class="img-circle contents__main__input__img">
+          <%= image_tag current_user.icon_image_url, class:"img-circle contents__main__input__img" %>
           <div class="tweet_area">
             <%= form_for @tweet do |f| %>
               <%= f.hidden_field :user_id, value: current_user.id %>
               <%= f.text_field :text, id: :new_tweet , class: "contents__main__input__form__text", placeholder:"いまなにしてる？"%>
-              <%= f.submit "ツイート", class: "tweet_area_btn btn-primary btn-success" %>
+              <%= f.submit "ツイート", class: "tweet-btn btn-primary btn-success" %>
               <% end %>
           </div>
         </div>

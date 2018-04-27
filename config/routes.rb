@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get  'users/:id'  => 'users#show'
   post "/" => "tweets#create"
   get 'users/:id/followings' => 'followings#show'
+  get 'users/:id/followers' => 'followers#show'
 
   resources :users, only: [:update]
 
