@@ -1,0 +1,74 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.users-edit {
+  margin: 120px auto;
+  width: 400px;
+  h2 {
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 20px;
+  }
+  .edit_user {
+    .field {
+      text-align: center;
+      border:0;
+      padding:10px;
+      font-size:2px;
+      margin:0 auto;
+      width:300px;
+      -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
+      border-radius: 3px;
+      #placeholder{
+        font-size: 50px;
+      }
+      p {
+        padding-left: 10px;
+      }
+      input {
+        padding: 10px;
+        width: 400px;
+        height: 40px;
+        margin: 10px 0px;
+        border-radius: 10px;
+        font-size: 16px;
+      }
+    }
+    .actions {
+      input {
+        height: 44px;
+        width: 440px;
+        display: inline-block;
+        padding: 7px 20px;
+        margin: 10px 0px;
+        border-radius: 25px;
+        text-decoration: none;
+        color: #FFF;
+        font-size: 20px;
+        text-align: center;
+        background-color: #00CCFF;
+      }
+    }
+  }
+  a {
+    height: 44px;
+    width: 400px;
+    display: inline-block;
+    padding: 7px 20px;
+    margin: 10px 0px;
+    border-radius: 25px;
+    text-decoration: none;
+    color: #FFF;
+    font-size: 20px;
+    text-align: center;
+    background-color: #00CCFF;
+  }
+}
+
+.input {
+  width:300px;
+  height:50px;
+}

@@ -10,6 +10,7 @@ class TweetsController < ApplicationController
     @users = User.all
     @user = current_user
     @recommends = User.where.not(id: @follow).where.not(id: current_user.id)
+    @images = @tweet.images
   end
 
   def create
@@ -32,10 +33,6 @@ class TweetsController < ApplicationController
       :text,
       :user_id,
       images_attributes: [:content])
-  end
-
-  def move_to_index
-    redirect_to action: :index unless user_signed_in?
   end
 
   def move_to_index

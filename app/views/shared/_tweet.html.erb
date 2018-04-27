@@ -20,6 +20,7 @@
     </div>
     <div class="content__info__center">
       <%= simple_format(tweet.text) %>
+      <%= render partial: "tweets/shared/image", collection: tweet.images %>
     </div>
     <div class="  content__info__bottom">
       <div class="glyphicon glyphicon-comment col-sm-3 col-md-3"></div>
