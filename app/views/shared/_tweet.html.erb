@@ -1,4 +1,15 @@
 <div class="content clearfix">
+  <% if user_signed_in? && current_user.id == tweet.user_id %>
+    <div class="btn-group pull-right" role="group">
+      <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    ^
+      </button>
+      <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+        <a class="dropdown-item" href="#"></a>
+        <%= link_to 'ツイートを削除', tweet_path(tweet), method: :delete %>
+      </div>
+    </div>
+  <% end %>
   <img src="https://www.nihonpet-plus.co.jp/dog/img/top_dog009.jpg" class="img-circle content__thumbnail">
   <div class="content__info">
     <div class="content__info__wapper">
@@ -16,9 +27,6 @@
       <div class="glyphicon glyphicon-heart col-sm-3 col-md-3"></div>
       <div class="glyphicon glyphicon-envelope col-sm-3 col-md-3"></div>
     </div>
-    <% if user_signed_in? && current_user.id == tweet.user_id %>
-      <%= link_to 'ツイートを削除', tweet_path(tweet), method: :delete %>
-    <% end %>
   </div>
 </div>
 <hr>
