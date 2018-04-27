@@ -8,6 +8,7 @@ class TweetsController < ApplicationController
     @tweets = Tweet.where(user_id: @indicate).order("created_at DESC")
     @users = current_user
     @recommends = User.where.not(id: @follow).where.not(id: current_user.id)
+
   end
 
   def create
@@ -16,16 +17,24 @@ class TweetsController < ApplicationController
     redirect_to action: 'index'
   end
 
+  def destroy
+    tweet = Tweet.find(params[:id])
+    if tweet.user_id == current_user.id
+      tweet.destroy
+      redirect_to :action => 'index'
+    end
+  end
+
   private
   def tweet_params
   end
 
   def move_to_index
     redirect_to action: :index unless user_signed_in?
-    params.require(:tweet).permit(
-      :text,
-      :user_id,
-      images_attributes: [:content])
+    # params.require(:tweets).permit(
+    #   :text,
+    #   :user_id,
+    #   images_attributes: [:content])
   end
 
   def user_params

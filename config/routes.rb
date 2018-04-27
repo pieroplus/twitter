@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:update]
 
-  resources :tweets,only:[:index,:create]
+  resources :tweets,only:[:index,:create,:destroy]
   patch 'users/:id/follow' => 'users#follow'
   delete 'users/:id/unfollow' => 'users#destroy'
 

@@ -16,6 +16,9 @@
       <div class="glyphicon glyphicon-heart col-sm-3 col-md-3"></div>
       <div class="glyphicon glyphicon-envelope col-sm-3 col-md-3"></div>
     </div>
+    <% if user_signed_in? && current_user.id == tweet.user_id %>
+      <%= link_to 'ツイートを削除', tweet_path(tweet), method: :delete %>
+    <% end %>
   </div>
 </div>
 <hr>
