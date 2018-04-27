@@ -70,4 +70,4 @@ gem 'therubyracer'   # javascript runtime。lessをコンパイルするため�
 gem 'less-rails'     # Railsでlessを使えるようにする。Bootstrapがlessで書かれているため
 gem 'acts_as_follower'
 gem 'mechanize'
-gem 'whenever', :require => false
+# gem 'whenever', :require => false
