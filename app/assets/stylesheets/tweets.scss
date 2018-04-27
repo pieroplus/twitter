@@ -107,7 +107,8 @@
         float: left;
         padding-left: 30px;
         &__text{
-          width: 80%;
+          margin-left: 10px;
+          width: 75%;
         }
       }
     }
@@ -128,7 +129,8 @@
 .tweet-btn{
   border-radius: 15px;
   float: right;
-  margin: 20px;
+  padding: 5px;
+  // margin: 10px;
 }
 
 .clearfix::after{

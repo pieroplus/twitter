@@ -1,5 +1,5 @@
 <html>
-  <body>
+  <body style="background-color:#EEEEEE;">
     <%= render partial: "shared/header" %>
   <div class="main-content">
     <div class="container-fluid contents">
@@ -42,11 +42,13 @@
               <%= f.hidden_field :user_id, value: current_user.id %>
               <%= f.text_field :text, id: :new_tweet , class: "contents__main__input__form__text", placeholder:"いまなにしてる？"%>
               <%= f.fields_for :images do |i| %>
-                  <%= i.label :content, "画" %>
-                  <%= i.file_field :content, class:"hidden" %>
-              <%= f.submit "ツイート", class: "tweet-btn btn-primary btn-success" %>
+                <%= i.label :content do %>
+                  <div class="glyphicon glyphicon-picture"></div>
                 <% end %>
+                <%= i.file_field :content, class:"hidden" %>
+                <%= f.submit "ツイート", class: "tweet-btn btn-primary btn-success" %>
               <% end %>
+            <% end %>
           </div>
         </div>
         <div class="contents__main__tweet">

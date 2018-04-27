@@ -6,11 +6,12 @@
   }
 }
 .modal-content{
-  height:220px;
+  height:180px;
   border-radius: 15px;
 }
 .modal-form{
   background-color: #B1F9D0;
+  height: 180px;
 }
 .modal-title{
   text-align: center;
@@ -24,20 +25,24 @@
   }
 }
 
-.new_tweet .tweet-btn{
-  margin:0;
-}
-
-.modal-body{
-  margin-top:15px;
+.modal-form_for{
+  &__body{
+    margin-top:15px;
+    float: left;
+    height:80px;
+    width:500px;
+    border-radius: 5px;
+    border: solid 2px green;
+  }
+  &__icon{
+  padding-top:100px;
   float: left;
-  height:80px;
-  width:500px;
-  border-radius: 5px;
-  border: solid 2px green;
-}
-.tweet-btn{
-  border-radius: 15px;
-  float: right;
-  margin: 20px;
+  margin-right: 30px;
+  }
+  &__btn{
+    border-radius: 20px;
+    margin-right: 10px;
+    padding:8px 15px 8px 15px;
+    float: right;
+  }
 }
