@@ -14,6 +14,7 @@ class UsersController < ApplicationController
     @tweet.images.build
     @tweets = @user.tweets.order("created_at DESC")
     @recommends = User.where.not(id: @follow).where.not(id: current_user.id)
+    @trends = Trend.order("id ASC").limit(10)
   end
 
   def edit

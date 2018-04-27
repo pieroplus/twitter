@@ -69,3 +69,5 @@ gem 'twitter-bootswatch-rails-helpers'
 gem 'therubyracer'   # javascript runtime。lessをコンパイルするために必要
 gem 'less-rails'     # Railsでlessを使えるようにする。Bootstrapがlessで書かれているため
 gem 'acts_as_follower'
+gem 'mechanize'
+gem 'whenever', :require => false
