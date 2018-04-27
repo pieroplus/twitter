@@ -10,8 +10,15 @@
         <%= @user.follow_count %>
       <% end %>
     </li>
-    <li class="mypage__info__nav__list">フォロワー</li>
+    <li class="mypage__info__nav__list">
+      <%= link_to "/users/#{@user.id}/followers", method: :"GET" do %>
+        フォロワー</br>
+        <%= @user.followers_count %>
+      <% end %></li>
     <li class="mypage__info__nav__list">いいね</li>
+    <li class="mypage__info__nav__list">
+      <%= link_to "プロフィール編集", '/users/edit' %>
+    </li>
   </ul>
   <% if current_user != @user %>
     <% if current_user.following?(@user) %>

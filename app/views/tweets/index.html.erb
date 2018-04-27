@@ -23,8 +23,10 @@
                   <% end %>
                 </div>
                 <div class="contents__left__user__info__status__block__follower col-sm-4 col-md-4">
-                  フォロワー
-                  <%= @users.followers_count %>
+                  <%= link_to "/users/#{current_user.id}/followers", method: :"GET" do %>
+                    フォロワー
+                    <%= @users.followers_count %>
+                  <% end %>
                 </div>
               </div>
             </div>
