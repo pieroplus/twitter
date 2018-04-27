@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180427062933) do
+ActiveRecord::Schema.define(version: 20180427121304) do
 
   create_table "follows", force: :cascade do |t|
     t.integer  "followable_id",   limit: 4,                   null: false
@@ -27,11 +27,10 @@ ActiveRecord::Schema.define(version: 20180427062933) do
   add_index "follows", ["follower_id", "follower_type"], name: "fk_follows", using: :btree
 
   create_table "images", force: :cascade do |t|
-    t.string   "content",    limit: 255, default: "", null: false
+    t.string   "content",    limit: 255
     t.integer  "tweet_id",   limit: 4
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-    t.string   "image",      limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "tweets", force: :cascade do |t|
@@ -64,6 +63,7 @@ ActiveRecord::Schema.define(version: 20180427062933) do
     t.text     "screen_name",            limit: 65535
     t.string   "icon_image",             limit: 255
     t.string   "header_image",           limit: 255
+    t.text     "introduction",           limit: 65535
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
