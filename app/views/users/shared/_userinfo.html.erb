@@ -1,10 +1,10 @@
 <div class="info">
-  <h4><%= @user.name%></h4>
+  <h4><%= @user.name %></h4>
   <%= link_to "#" do %>
     <p class="info__name">@<%= @user.screen_name %></p>
   <% end %>
   <p class="info__comment">
-    大富豪になりたい・・・。
+    <%= @user.introduction %>
   </p>
   <p class="info__from">
     <span class="glyphicon glyphicon-record"></span> 東京

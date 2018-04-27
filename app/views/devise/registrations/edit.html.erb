@@ -24,6 +24,11 @@
     <%= f.file_field :header_image %>
     </div>
 
+    <div class="field">
+    <%= f.label :introduction ,"自己紹介文"%><br />
+    <%= f.text_field :introduction %>
+    </div>
+
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
     <% end %>
