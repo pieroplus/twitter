@@ -13,7 +13,7 @@
   <div class="header__right col-sm-5 col-md-5">
     <form class="header__right__form">
       <input type="text" placeholder="キーワード検索" class="header__right__form__search">
-      <img src="https://www.nihonpet-plus.co.jp/dog/img/top_dog009.jpg" class="img-circle header__right__form__img">
+      <%= image_tag current_user.icon_image_url, class:"img-circle header__right__form__img" %>
       <button type="button" class="img-circle header__right__form__btn btn-primary btn-sm btn-success btn-round" data-toggle="modal" data-target="#input">ツイート</button>
     </form>
   </div>

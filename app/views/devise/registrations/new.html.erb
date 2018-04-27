@@ -1,43 +1,40 @@
 <body>
-<div class="new_user_registration">
-  <h2>「いま」起きていることを見つけよう</h2>
-  <h3>Twitterをはじめよう</h3>
+  <div class="new_user_registration">
+    <h2>「いま」起きていることを見つけよう</h2>
+    <h3>Twitterをはじめよう</h3>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= devise_error_messages! %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
 
-    <dic class="field">
-      <%= f.label :name %><br />
-      <%= f.text_field :name, placeholder: "名前", class: "input" %>
+      <div class="field">
+        <%= f.text_field :name, placeholder: "アカウントの名前", class: "input" %>
+      </div>
 
-    <div class="field">
-      <%= f.text_field :name, placeholder: "アカウントの名前", class: "input" %>
-    </div>
+      <div class="field">
+        <%= f.text_field :screen_name, placeholder: "アカウントのID(英数字のみ)", class: "input" %>
+      </div>
 
-    <div class="field">
-      <%= f.text_field :screen_name, placeholder: "アカウントのID", class: "input" %>
-    </div>
+      <div class="field">
+        <%= f.email_field :email, placeholder: "メールアドレス", class: "input" %>
+      </div>
 
-    <div class="field">
-      <%= f.email_field :email, placeholder: "メールアドレス", class: "input" %>
-    </div>
+      <div class="field">
+        <% if @validatatable %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "off", placeholder: "パスワード", class: "input" %>
+      </div>
 
-    <div class="field">
-      <% if @validatatable %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
-      <% end %><br />
-      <%= f.password_field :password, autocomplete: "off", placeholder: "パスワード", class: "input" %>
-    </div>
+      <div class="field">
+        <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "パスワードの再確認" , class: "input" %>
+      </div>
 
-    <div class="field">
-      <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "パスワードの再確認" , class: "input" %>
-    </div>
-
-    <div class="sign_up_btn">
-      <%= f.submit "アカウント作成", id: "sign_up_btn" %>
-    </div>
-  <% end %>
-</div>
-
-  <%= render "devise/shared/links" %>
-
+      <div class="sign_up_btn">
+        <%= f.submit "アカウント作成", id: "sign_up_btn" %>
+      </div>
+    <% end %>
+  </div>
+  <div class="log_in">
+    <%= render "devise/shared/links" %>
+  </div>
+</body>

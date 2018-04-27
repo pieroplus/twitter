@@ -11,28 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180417052052) do
+ActiveRecord::Schema.define(version: 20180427030551) do
 
-  create_table "images", force: :cascade do |t|
-    t.string   "content",    limit: 255
-    t.integer  "tweet_id",   limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.string   "image",      limit: 255
+  create_table "follows", force: :cascade do |t|
+    t.integer  "followable_id",   limit: 4,                   null: false
+    t.string   "followable_type", limit: 255,                 null: false
+    t.integer  "follower_id",     limit: 4,                   null: false
+    t.string   "follower_type",   limit: 255,                 null: false
+    t.boolean  "blocked",                     default: false, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "tweets", force: :cascade do |t|
-    t.text     "text",       limit: 65535
-    t.integer  "image_id",   limit: 4
-    t.integer  "user_id",    limit: 4
-    t.integer  "retweet_id", limit: 4
-    t.integer  "reply_id",   limit: 4
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-  end
-
-  add_index "tweets", ["image_id"], name: "fk_rails_c4ac7c0255", using: :btree
-  add_index "tweets", ["user_id"], name: "fk_rails_003928b7f5", using: :btree
+  add_index "follows", ["followable_id", "followable_type"], name: "fk_followables", using: :btree
+  add_index "follows", ["follower_id", "follower_type"], name: "fk_follows", using: :btree
 
   create_table "images", force: :cascade do |t|
     t.string   "content",    limit: 255, default: "", null: false
@@ -66,16 +58,12 @@ ActiveRecord::Schema.define(version: 20180417052052) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip",     limit: 255
     t.string   "last_sign_in_ip",        limit: 255
-    t.text     "introduction",           limit: 65535
-    t.text     "address",                limit: 65535
-    t.text     "user_url",               limit: 65535
-    t.text     "birthday",               limit: 65535
-    t.string   "icon_img",               limit: 255
-    t.string   "header_img",             limit: 255
     t.datetime "created_at",                                        null: false
     t.datetime "updated_at",                                        null: false
     t.text     "name",                   limit: 65535
     t.text     "screen_name",            limit: 65535
+    t.string   "icon_image",             limit: 255
+    t.string   "header_image",           limit: 255
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

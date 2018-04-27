@@ -1,9 +1,11 @@
 <div class="mypage">
-  <img src="http://card-professor.jp/wp/wp-content/uploads/2016/02/baseball-collaboration.jpg" class="mypage__img">
+  <%= image_tag @user.header_image_url, class:"mypage__img" %>
   <div class="mypage__info clearfix">
-  <img src="https://www.nihonpet-plus.co.jp/dog/img/top_dog009.jpg" class="img-circle mypage__info__img">
+  <%= image_tag @user.icon_image_url, class:"img-circle mypage__info__img" %>
   <ul class="mypage__info__nav">
-    <li class="mypage__info__nav__list">ツイート</br></li>
+    <li class="mypage__info__nav__list">ツイート</br>
+    <%= @user.tweets.count(:user_id) %>
+    </li>
     <li class="mypage__info__nav__list">
       <%= link_to "/users/#{@user.id}/followings", method: :"GET" do %>
         フォロー</br>

@@ -7,9 +7,9 @@ class TweetsController < ApplicationController
     @tweet = Tweet.new
     @tweet.images.build
     @tweets = Tweet.where(user_id: @indicate).order("created_at DESC")
-    @users = current_user
+    @users = User.all
+    @user = current_user
     @recommends = User.where.not(id: @follow).where.not(id: current_user.id)
-    @tweetnumber = Tweet.where(user_id: current_user.id).count(:user_id)
   end
 
   def create
