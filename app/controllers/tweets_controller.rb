@@ -3,9 +3,11 @@ class TweetsController < ApplicationController
     @tweet = Tweet.new
     @tweet.images.build
     @tweets = Tweet.includes(:user).order("created_at DESC")
+    @images = @tweet.images
   end
 
   def create
+    binding.pry
     @tweet = Tweet.new(tweet_params)
     @tweet.save
     redirect_to action: 'index'

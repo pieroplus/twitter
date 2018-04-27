@@ -61,6 +61,9 @@
               <%= f.hidden_field :user_id, value: current_user.id %>
               <%= f.text_field :text, id: :new_tweet , class: "contents__main__input__form__text", placeholder:"いまなにしてる？"%>
               <%= f.submit "ツイート", class: "tweet-btn btn-primary btn-success" %>
+              <%= f.fields_for :images do |i| %>
+                <%= i.file_field :content %>
+                <% end %>
               <% end %>
           </div>
         </div>
