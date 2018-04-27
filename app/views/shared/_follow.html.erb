@@ -10,9 +10,9 @@
     <div class="follow__main col-sm-9 col-md-9">
       <% @follow.each do |user| %>
         <div class="follow__main__user col-sm-4 col-md-4">
-          <img src="http://card-professor.jp/wp/wp-content/uploads/2016/02/baseball-collaboration.jpg" class="follow__main__user__bgimg">
+          <%= image_tag user.header_image_url, class:"follow__main__user__bgimg" %>
           <div class="follow__main__user__info">
-            <img src="https://www.nihonpet-plus.co.jp/dog/img/top_dog009.jpg" class=" img-circle follow__main__user__info__img">
+            <%= image_tag user.icon_image_url, class:"img-circle follow__main__user__info__img" %>
             <div class="follow__main__user__info__btn">
               <% if current_user.following?(user) %>
                 <%= link_to "フォロー中", unfollow_user_path(user), class: "follow__main__user__info__btn__follow" %>
